@@ -6,6 +6,8 @@ use App\Models\Portfolio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePortfolioRequest;
+use App\Models\technology;
+use App\Models\type;
 
 class PortfolioController extends Controller
 {
@@ -13,7 +15,9 @@ class PortfolioController extends Controller
     public function index()
     {
         $portfolio = Portfolio::all();
-        return view('admin.index', compact("portfolio"));
+        $technologies = technology::all();
+        $types = type::all();
+        return view('admin.index', compact('portfolio', 'technologies', "types"));
     }
 
     /**
@@ -21,7 +25,9 @@ class PortfolioController extends Controller
      */
     public function create()
     {
-        return view("admin.create");
+        $technologies = technology::all();
+        $types = type::all();
+        return view("admin.create", compact('technologies', "types"));
     }
 
     /**

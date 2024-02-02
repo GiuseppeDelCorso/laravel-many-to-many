@@ -26,6 +26,17 @@
                         <div>
                             {{ $portfolios->type ? $portfolios->type->date : 'senza categoria' }}
                         </div>
+                        <div class="card-body">
+                                @if (count($portfolios->technologies) > 0)
+                                    <ul>
+                                        @foreach ($portfolios->technologies as $technology)
+                                            <li>{{ $technology->name }}</li>
+                                        @endforeach
+                                    </ul>
+                                @else
+                                    <span>Non ci sono tag collegati</span>
+                                @endif
+                            </div>
                     </div>
                 </div>
             @endforeach

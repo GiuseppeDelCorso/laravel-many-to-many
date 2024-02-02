@@ -16,8 +16,13 @@ class Portfolio extends Model
         "thumb",
     ];
 
-    public function category()
+    public function type()
     {
-        return $this->belongsTo(Type::class);
+        return $this->belongsTo(type::class);
+    }
+
+    public function technologies()
+    {
+        return $this->belongsToMany(technology::class);
     }
 }
